@@ -11,6 +11,7 @@ def isValidGuess(boggle2d, text, verbose):
     assert len(text) > 0
 
     # Assume false
+    global isValid
     isValid = False
 
     for i in range(0, rows):
@@ -26,9 +27,7 @@ def isValidGuess(boggle2d, text, verbose):
                 index = 0
 
                 # visit init letter
-                if dfsVisit(boggle2d, isVisited, i, j, rows, cols, index, text, verbose) == True:
-                    isValid = True
-                    break
+                dfsVisit(boggle2d, isVisited, i, j, rows, cols, index, text, verbose)
 
     if verbose:
         if isValid:
@@ -44,20 +43,20 @@ def dfsVisit(boggle2d, isVisited, i, j, rows, cols, index, text, verbose):
     # color visited
     isVisited[i][j] = 1
 
+    if verbose:
+        print 'visiting: ', boggle2d[i][j], '\t at index:', i, j
+
     # If we reached last letter and visited then terminate successfully
     if index == len(text) - 1:
-        return True
+        global isValid
+        isValid = True
 
     else:
         # traverse neighbors
         for [ni, nj] in adj(i, j, rows, cols):
-
             # path is unvisited and fits patterns
             if isVisited[ni][nj] == 0 and boggle2d[ni][nj] == text[index + 1]:
-                return dfsVisit(boggle2d, isVisited, ni, nj, rows, cols, index + 1, text, verbose)
-
-        return False
-
+                dfsVisit(boggle2d, isVisited, ni, nj, rows, cols, index + 1, text, verbose)
 
 def adj(i, j, rows, cols):
     assert i >= 0 and j >= 0 and rows >= 0 and cols >= 0 and i < rows and j < cols
@@ -95,8 +94,10 @@ if __name__ == '__main__':
         try:
             with open(sys.argv[1]) as textFile:
                 boggle2d = [line.split() for line in textFile]
+                boggle2d[0][0] = boggle2d[0][0].replace("\xef\xbb\xbf", "")
         except Exception as e:
             print 'ERROR: cannot read/parse input file for boggle array. Each line must contain a single row of the array. Letters must be seperated with a space.'
+            exit(0)
 
         word = sys.argv[2]
 
@@ -104,4 +105,4 @@ if __name__ == '__main__':
         print isValidGuess(boggle2d, word, False)
 
     else:
-        print 'usage: python GuessController.py <boggle_2d_array.txt> <test_word>'
+        print 'usage: python GuessValidator.py <boggle_2d_array.txt> <test_word>'

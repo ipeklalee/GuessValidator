@@ -6,10 +6,10 @@ GuessValidator is a python script that takes a 2D array and a string its paramet
 Usage
 ----------------------
 ```
-python GuessValidator.py [boogle_array_txt] [word]
+python GuessValidator.py [boggle_array_txt] [word]
 ```
 python GuessValidator.py: calls the program
-[boogle_array_txt]: the text file that contains 2D boogle array
+[boggle_array_txt]: the text file that contains 2D boggle array
 [word] string that is expected to be checked if it is a valid guess or not
 
 
@@ -17,18 +17,19 @@ Test Cases
 ----------------------
 1. Following letters given as 2d array in array1.txt			
 
-|I P E K B A Y S A L |
-|I S A H A P P Y P E |
-|R S O N W H O I S A |
-|C O M P U T E R E N |
-|G I N E E R A N D S |
-|H E L O V E S H E R |
-|S U B J E C T S H E |
-|L I V E S I N L O N |
-|D O N W H I C H I S |
-|T H E M O S T B E A |
-
-* Copy and paste following to terminal to test
+```
+I P E K B A Y S A L
+I S A H A P P Y P E
+R S O N W H O I S A
+C O M P U T E R E N
+G I N E E R A N D S
+H E L O V E S H E R
+S U B J E C T S H E
+L I V E S I N L O N 
+D O N W H I C H I S 
+T H E M O S T B E A 
+```
+* Copy and paste the following code to unix terminal for testing:
 
 ```
 python GuessValidator.py array1.txt HANURVES
@@ -48,7 +49,7 @@ python GuessValidator.py array1.txt ISI
 ```
 python GuessValidator.py array1.txt BEHTINEV
 ```
-> Expected Output: True
+> Expected Output: False
 
 ```
 python GuessValidator.py array1.txt AYIPBU
@@ -57,39 +58,82 @@ python GuessValidator.py array1.txt AYIPBU
 
 
 
-2)
-array2.txt
+2. Following letters given as 2d array in array2.txt
 
+```
 B E N E G
 E R I S T 
 E S E M B
 U R A Y A
 S U B L I
+```
 
-Tested with Strings:		Expected Output:		Output:
-ENE							true					true
-GESMESRER					false					false
-ERISTE						false					false
-SEMBURU						true					true
-BAL							true					true
+* Copy and paste the following code to unix terminal for testing:
 
-3)
-array3.txt
+```
+python GuessValidator.py array2.txt ENE
+```
+> Expected Output: True
 
+```
+python GuessValidator.py array2.txt GESMESRER
+```
+> Expected Output: True
+
+```
+python GuessValidator.py array2.txt ERISTENEBEN
+```
+> Expected Output: False
+
+```
+python GuessValidator.py array2.txt SEMBURU
+```
+> Expected Output: False
+
+```
+python GuessValidator.py array2.txt BAL
+```
+> Expected Output: True
+
+
+3. Following letters given as 2d array in array3.txt
+
+```
 M I N
 A L M
 E S A
+```
 
-Tested with Strings:		Expected Output:		Output:
-MINMASELA					true					true
-MINMASELAM					false					false
-ILLA						false					false
-ELIN						true					true
-SALIN						true					true
+* Copy and paste the following code to unix terminal for testing:
 
-4)
-array4.txt
+```
+python GuessValidator.py array3.txt MINMASELA
+```
+> Expected Output: True
 
+```
+python GuessValidator.py array3.txt MINMASELAM
+```
+> Expected Output: False
+
+```
+python GuessValidator.py array3.txt ILLA
+```
+> Expected Output: False
+
+```
+python GuessValidator.py array3.txt ELIN
+```
+> Expected Output: True
+
+```
+python GuessValidator.py array3.txt SALIN
+```
+> Expected Output: True
+
+4. Following letters given as 2d array in array4.txt
+
+```
 E T A B I B U
 N U Y A P M A
 K O K A D A R
@@ -97,22 +141,33 @@ D A K O L A Y
 D E G I L U G 
 R A S T I K B
 A Y A A A A A
+```
+* Copy and paste the following code to unix terminal for testing:
 
-Tested with Strings:		Expected Output:		Output:
-ABI							true					true
-KAPIBURDA					false					false
-EKOLDAYA					true					true
-SENI						false					false
-AY							true					true
+```
+python GuessValidator.py array4.txt ABI
+```
+> Expected Output: True
 
-5)
-array5.txt
+```
+python GuessValidator.py array4.txt KAPIBURDA
+```
+> Expected Output: False
 
-I
+```
+python GuessValidator.py array4.txt EKOLDAYA
+```
+> Expected Output: True
 
-Tested with Strings:		Expected Output:		Output:
-I							true					true
-II							false					false
-TIR							false					false
+```
+python GuessValidator.py array4.txt SENI
+```
+> Expected Output: False
 
-Program works appropriately if file that includes 2D array is written as above. You can test the program with different array samples and strings.
+```
+python GuessValidator.py array4.txt AY
+```
+> Expected Output: True
+
+
+#### Program works appropriately if file that includes 2D array is formatted as above. You can test the program with your own array samples and words.
