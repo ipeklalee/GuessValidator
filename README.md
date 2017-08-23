@@ -1,6 +1,6 @@
 About
 ----------------------
-GuessValidator is a python script that takes a 2D array and a string its parameters. It determines if given string is a valid guess on the boggle board which is composed of given 2D array. It uses depth first search technique to find out if given string exists on the board. Returns true if given string is a valid guess and false otherwise.
+GuessValidator is a python script that takes a 2D array and a string as parameters. It determines if given string is a valid guess on the boggle board which is composed of given 2D array. It uses depth first search technique to find out if given string exists on the board. Returns true if given string is a valid guess and false otherwise.
 
 
 Usage
